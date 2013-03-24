@@ -7,6 +7,19 @@
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
  */
+ 
+/* 
+ Dictionary:
+ 
+min-width: 768px and max-width: 979px
+max-width: 767px
+min-width: 1200px
+min-width: 768px and max-width: 979px
+max-width: 767px
+max-width: 480px
+max-width: 979px
+min-width: 980px
+ */
 
 .clearfix {
   *zoom: 1;
@@ -65,6 +78,8 @@
   display: inherit !important;
 }
 
+/* 768px - 979px
+-------------------------------------------------- */
 @media (min-width: 768px) and (max-width: 979px) {
   .hidden-desktop {
     display: inherit !important;
@@ -78,8 +93,18 @@
   .hidden-tablet {
     display: none !important;
   }
+  .navbar .brand {
+		top: 20px;
+		left: 25px;
+		width: 90px;
+		height: 55px;
+		background: url(../img/logo_medium.png) no-repeat 0px 0px;
+	}
+  
 }
 
+/* <767px
+-------------------------------------------------- */
 @media (max-width: 767px) {
   .hidden-desktop {
     display: inherit !important;
@@ -93,21 +118,21 @@
   .hidden-phone {
     display: none !important;
   }
+   .navbar .brand {
+		top: 20px;
+		left: 25px;
+		width: 90px;
+		height: 55px;
+		background: url(../img/logo_medium.png) no-repeat 0px 0px;
+	}
 }
 
 .visible-print {
   display: none !important;
 }
 
-@media print {
-  .visible-print {
-    display: inherit !important;
-  }
-  .hidden-print {
-    display: none !important;
-  }
-}
-
+/* >1200px
+-------------------------------------------------- */
 @media (min-width: 1200px) {
   .row {
     margin-left: -30px;
@@ -458,6 +483,8 @@
   }
 }
 
+/* 768px - 979px
+-------------------------------------------------- */
 @media (min-width: 768px) and (max-width: 979px) {
   .row {
     margin-left: -20px;
@@ -799,6 +826,8 @@
   }
 }
 
+/* < 767px
+-------------------------------------------------- */
 @media (max-width: 767px) {
   body {
     padding-right: 20px;
@@ -810,6 +839,13 @@
     margin-right: -20px;
     margin-left: -20px;
   }
+  .navbar .brand {
+		top: 20px;
+		left: 25px;
+		width: 90px;
+		height: 55px;
+		background: url(../img/logo_medium.png) no-repeat 0px 0px;
+	}
   .container-fluid {
     padding: 0;
   }
@@ -897,10 +933,20 @@
   }
 }
 
+/* < 480px
+-------------------------------------------------- */
 @media (max-width: 480px) {
   .nav-collapse {
     -webkit-transform: translate3d(0, 0, 0);
   }
+  .navbar .brand {
+		top: 3px;
+		left: 25px;
+		margin: 0px auto 0px auto;
+		width: 127px;
+		height: 38px;
+		background: url(../img/logo_small.png) no-repeat 0px 0px;
+	}
   .page-header h1 small {
     display: block;
     line-height: 20px;
@@ -949,6 +995,8 @@
   }
 }
 
+/* < 979px
+-------------------------------------------------- */
 @media (max-width: 979px) {
   body {
     padding-top: 0;
@@ -976,6 +1024,13 @@
     padding-left: 10px;
     margin: 0 0 0 -5px;
   }
+  .navbar .brand {
+		top: 20px;
+		left: 25px;
+		width: 90px;
+		height: 55px;
+		background: url(../img/logo_medium.png) no-repeat 0px 0px;
+	}
   .nav-collapse {
     clear: both;
   }
@@ -1101,6 +1156,8 @@
   }
 }
 
+/*  > 980px
+-------------------------------------------------- */
 @media (min-width: 980px) {
   .nav-collapse.collapse {
     height: auto !important;
