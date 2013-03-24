@@ -107,6 +107,11 @@ min-width: 980px
   .navbar .btn .btn-navbar {
     margin-top: 25px;
   }
+ /* 
+ .modal.login {
+    left: 45%;
+    }
+ */
 }
 
 /* <767px
@@ -840,6 +845,11 @@ min-width: 980px
   .uneditable-input.span1 {
     width: 28px;
   }
+  /* 
+.modal.login {
+    left: 25%;
+  }
+ */
 }
 
 /* < 767px
@@ -855,7 +865,7 @@ min-width: 980px
     margin-right: -20px;
     margin-left: -20px;
   }
-	.navbar-inner {
+  .navbar-inner {
   min-height: 90px;
   }
   .navbar .brand {
@@ -948,6 +958,9 @@ min-width: 980px
     width: auto;
     margin: 0;
   }
+  .modal.login {
+    left: 15%;
+    }
   .modal.fade {
     top: -100px;
   }
@@ -1014,6 +1027,9 @@ min-width: 980px
     top: 10px;
     right: 10px;
     left: 10px;
+  } 
+  .modal.login {
+    left: 10%;
   }
   .modal-header .close {
     padding: 10px;
@@ -1062,7 +1078,7 @@ min-width: 980px
   }
   .nav-collapse .nav {
     float: none;
-    margin: 0 0 10px;
+    margin: 15px 0 10px;
   }
   .nav-collapse .nav > li {
     float: none;
@@ -1160,7 +1176,6 @@ min-width: 980px
   }
   .navbar .btn-navbar {
     display: block;
-   /*  margin: 25px ; */
   }
 }
 

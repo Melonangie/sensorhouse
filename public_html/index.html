@@ -32,6 +32,9 @@
         <header class="navbar navbar-static-top">
             <div class="navbar-inner">
                 <div class="container">
+                <!-- Button to trigger modal -->
+<a href="#myModal" role="button" class="btn" data-toggle="modal">Login</a> 
+
                     <a class="brand" href="#"></a>
                     <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
                         <span class="icon-bar"></span>
@@ -56,11 +59,32 @@
                                 </ul>
                             </li>
                         </ul>
-                        <form class="navbar-form pull-right">
+                                      <!-- 
+<form class="navbar-form pull-right">
                             <input class="span2" type="text" placeholder="Email">
                             <input class="span2" type="password" placeholder="Password">
                             <button type="submit" class="btn">Sign in</button>
                         </form>
+ --><!-- Modal -->
+<div id="myModal" class="modal hide fade login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal-header">
+<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h2 class="form-signin-heading">Please sign in</h2>
+        </div>
+<div class="modal-body">
+                        <form class="form-signin" method="POST" action="" accept-charset="UTF-8">
+        <div class="alert alert-error">
+<a class="close" data-dismiss="alert" href="#">x</a>Incorrect Username or Password!
+</div> 
+        <input type="text" class="input-block-level" placeholder="Email address">
+        <input type="password" class="input-block-level" placeholder="Password">
+        <label class="checkbox">
+          <input type="checkbox" value="remember-me"> Remember me
+        </label>
+        <button class="btn btn-large btn-primary" type="submit">Sign in</button>
+      </form>
+</div>
+         <!-- Modal End -->
                     </div><!--/.nav-collapse -->
                 </div>
             </div>
