@@ -1,13 +1,13 @@
 <?php
      session_start();
     // Operations classiques
-    include_once ('./operations/operation.class.php');
+    include_once ('./functions/paginas.class.php');
     // Operations des membres
-    include_once ('./operations/operationMembre.class.php');
-    // Operations de l'Administrateur
-    include_once ('./operations/operationAdmin.class.php');
-    // Connexion BD
-    include_once ('./bd/BD.class.php');
+//    include_once ('./functions/operationMembre.class.php');
+//    // Operations de l'Administrateur
+//    include_once ('./functions/operationAdmin.class.php');
+//    // Connexion BD
+//    include_once ('./bd/BD.class.php');
     
     // boolean de contrôle de membre
     $boolMember = 0;
@@ -20,20 +20,20 @@
         
     include ('./includes/header.php');
     
-    $monAction = null;
+    $accion = null;
         $op = "index";
         if (isset($_GET['action'])) {
             $op = (string)$_GET['action'];
         }
         if ($boolAdmin == 1) {
-            $monAction = new myOperationAdmin();
-            $monAction -> doActionAdmin($op);
+            $accion = new myOperationAdmin();
+            $accion -> doActionAdmin($op);
         } else if ($boolMember == 1) {
-            $monAction = new myOperationMembre();
-            $monAction -> doActionMembre($op);
+            $accion = new myOperationMembre();
+            $accion -> doActionMembre($op);
         } else {
-            $monAction = new myOperation();
-            $monAction -> doAction($op);
+            $accion = new paginas();
+            $accion -> doAction($op);
         }
         
      include ('./includes/footer.php');   

@@ -11,53 +11,8 @@
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
 --
--- Database: `a7599453_enterpr`
+-- Database: `a7599453_enterpr` InnoDB
 --
-
--- --------------------------------------------------------
-
---
--- Table structure for table `acceso`
---
-
-CREATE TABLE `acceso` (
-  `id` int(3) NOT NULL AUTO_INCREMENT COMMENT 'Users ID',
-  `username` varchar(25) COLLATE utf8_spanish_ci NOT NULL COMMENT 'Nombres de usuarios',
-  `password` varchar(19) COLLATE utf8_spanish_ci NOT NULL COMMENT 'Claves',
-  `type` char(1) COLLATE utf8_spanish_ci NOT NULL DEFAULT 'u' COMMENT 'Tipo de usurio',
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `username` (`username`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci COMMENT='Autenticacion de  usuarios' AUTO_INCREMENT=4 ;
-
---
--- Dumping data for table `acceso`
---
-
-INSERT INTO `acceso` VALUES(1, 'user', 'ee5ZZAg.T/1YM', 'u');
-INSERT INTO `acceso` VALUES(2, 'empleado', '08sqBXPrctEys', 'e');
-INSERT INTO `acceso` VALUES(3, 'admin', '21YJ.FGrwabtY', 'a');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `cliente_factura`
---
-
-CREATE TABLE `cliente_factura` (
-  `id` int(5) NOT NULL,
-  `rfcid` int(3) NOT NULL,
-  `fecha` date NOT NULL,
-  `cantidad` float NOT NULL,
-  `ventaid` int(5) NOT NULL,
-  `fecha_pago` tinyint(1) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `rfcid` (`rfcid`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci COMMENT='Info de Facturacion de clientes';
-
---
--- Dumping data for table `cliente_factura`
---
-
 
 -- --------------------------------------------------------
 
@@ -77,54 +32,28 @@ CREATE TABLE `cliente_rfc` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `rfc` (`rfc`),
   KEY `nombre` (`nombre`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci COMMENT='rfc de facturacion' AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci COMMENT='rfc de facturacion' AUTO_INCREMENT=1 ;
 
 --
 -- Dumping data for table `cliente_rfc`
 --
 
-
 -- --------------------------------------------------------
 
 --
--- Table structure for table `compra`
+-- Table structure for table `forma_pago`
 --
 
-CREATE TABLE `compra` (
-  `id` int(5) NOT NULL AUTO_INCREMENT,
-  `fecha` date NOT NULL,
-  `provedorid` int(2) NOT NULL,
-  `productoid` int(1) NOT NULL,
-  `cantidad` int(2) NOT NULL,
-  `total` float NOT NULL,
+CREATE TABLE `cliente_forma_pago` (
+  `id` int(1) NOT NULL AUTO_INCREMENT,
+  `tipo` varchar(19) COLLATE utf8_spanish_ci NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `provedorid` (`provedorid`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci COMMENT='compras' AUTO_INCREMENT=1 ;
+  UNIQUE KEY `tipo` (`tipo`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci COMMENT='forma de pago' AUTO_INCREMENT=1 ;
 
 --
--- Dumping data for table `compra`
+-- Dumping data for table `forma_pago`
 --
-
-
--- --------------------------------------------------------
-
---
--- Table structure for table `compra_factura`
---
-
-CREATE TABLE `compra_factura` (
-  `id` int(5) NOT NULL AUTO_INCREMENT,
-  `compraid` int(5) NOT NULL,
-  `fechapago` date NOT NULL,
-  `formapagoid` int(1) NOT NULL,
-  `transaccion` varchar(25) COLLATE utf8_spanish_ci NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci COMMENT='facturas de compraas' AUTO_INCREMENT=1 ;
-
---
--- Dumping data for table `compra_factura`
---
-
 
 -- --------------------------------------------------------
 
@@ -132,7 +61,7 @@ CREATE TABLE `compra_factura` (
 -- Table structure for table `contacto`
 --
 
-CREATE TABLE `contacto` (
+CREATE TABLE `cliente_contacto` (
   `id` int(3) NOT NULL AUTO_INCREMENT COMMENT 'id del contacto',
   `userid` varchar(25) COLLATE utf8_spanish_ci NOT NULL COMMENT 'Nombre de usuarios',
   `rfcid` int(3) NOT NULL,
@@ -143,29 +72,11 @@ CREATE TABLE `contacto` (
   `materno` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `userid` (`userid`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci COMMENT='nombre de contactos' AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci COMMENT='nombre de contactos' AUTO_INCREMENT=1 ;
 
 --
 -- Dumping data for table `contacto`
 --
-
-
--- --------------------------------------------------------
-
---
--- Table structure for table `contacto_email`
---
-
-CREATE TABLE `contacto_email` (
-  `contactoID` int(3) NOT NULL COMMENT 'id del contacto',
-  `email` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
-  KEY `contactoID` (`contactoID`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci COMMENT='email de contactos';
-
---
--- Dumping data for table `contacto_email`
---
-
 
 -- --------------------------------------------------------
 
@@ -173,179 +84,51 @@ CREATE TABLE `contacto_email` (
 -- Table structure for table `contacto_tel`
 --
 
-CREATE TABLE `contacto_tel` (
+CREATE TABLE `cliente_contacto_tel` (
   `contactoID` int(3) NOT NULL COMMENT 'id del usuario',
   `tipo` varchar(15) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL COMMENT 'tipo de telefono',
   `numero` varchar(25) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
   KEY `contactoID` (`contactoID`)
-) ENGINE=MyISAM DEFAULT CHARSET=ucs2 COLLATE=ucs2_spanish_ci COMMENT='telefonos de contactos';
+) ENGINE=InnoDB DEFAULT CHARSET=ucs2 COLLATE=ucs2_spanish_ci COMMENT='telefonos de contactos';
 
 --
 -- Dumping data for table `contacto_tel`
 --
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `contacto_email`
+--
+
+CREATE TABLE `cliente_contacto_email` (
+  `contactoID` int(3) NOT NULL COMMENT 'id del contacto',
+  `email` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
+  KEY `contactoID` (`contactoID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci COMMENT='email de contactos';
+
+--
+-- Dumping data for table `contacto_email`
+--
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `departamento`
+-- Table structure for table `producto`
 --
 
-CREATE TABLE `departamento` (
+CREATE TABLE `paquete_productos` (
   `id` int(2) NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(25) COLLATE utf8_spanish_ci NOT NULL,
+  `modelo` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
   `descripcion` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `nombre` (`nombre`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci COMMENT='departamentos' AUTO_INCREMENT=1 ;
+  UNIQUE KEY `modelo` (`modelo`),
+  KEY `descripcion` (`descripcion`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci COMMENT='productos' AUTO_INCREMENT=1 ;
 
 --
--- Dumping data for table `departamento`
+-- Dumping data for table `producto`
 --
-
-
--- --------------------------------------------------------
-
---
--- Table structure for table `empleados`
---
-
-CREATE TABLE `empleados` (
-  `id` int(3) NOT NULL,
-  `departid` int(2) NOT NULL,
-  `puestoid` int(2) NOT NULL,
-  `ingreso` date NOT NULL,
-  `nombre` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
-  `paterno` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
-  `materno` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
-  `email` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
-  `numero` varchar(9) COLLATE utf8_spanish_ci NOT NULL,
-  `ext` varchar(4) COLLATE utf8_spanish_ci NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `departid` (`departid`,`puestoid`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci COMMENT='empleados';
-
---
--- Dumping data for table `empleados`
---
-
-
--- --------------------------------------------------------
-
---
--- Table structure for table `forma_pago`
---
-
-CREATE TABLE `forma_pago` (
-  `id` int(1) NOT NULL AUTO_INCREMENT,
-  `tipo` varchar(19) COLLATE utf8_spanish_ci NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `tipo` (`tipo`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci COMMENT='forma de pago' AUTO_INCREMENT=1 ;
-
---
--- Dumping data for table `forma_pago`
---
-
-
--- --------------------------------------------------------
-
---
--- Table structure for table `instalacion`
---
-
-CREATE TABLE `instalacion` (
-  `id` int(4) NOT NULL,
-  `contactoid` int(3) NOT NULL,
-  `ventaid` int(5) NOT NULL,
-  `instaladorid` int(3) NOT NULL,
-  `listadematerialid` int(5) NOT NULL,
-  `fecha` date NOT NULL,
-  `direccion` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
-  `ciudad` varchar(19) COLLATE utf8_spanish_ci NOT NULL,
-  `estado` varchar(19) COLLATE utf8_spanish_ci NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `facturaid` (`contactoid`,`ventaid`,`instaladorid`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci COMMENT='instalaciones';
-
---
--- Dumping data for table `instalacion`
---
-
-
--- --------------------------------------------------------
-
---
--- Table structure for table `lista_entrega`
---
-
-CREATE TABLE `lista_entrega` (
-  `id` int(5) NOT NULL AUTO_INCREMENT,
-  `facturaid` int(5) NOT NULL,
-  `instalacionid` int(5) NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `facturaid` (`facturaid`,`instalacionid`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci COMMENT='lista de entrega' AUTO_INCREMENT=1 ;
-
---
--- Dumping data for table `lista_entrega`
---
-
-
--- --------------------------------------------------------
-
---
--- Table structure for table `lista_recepcion`
---
-
-CREATE TABLE `lista_recepcion` (
-  `id` int(5) NOT NULL AUTO_INCREMENT,
-  `compraid` int(5) NOT NULL,
-  `fecha` date NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `compraid` (`compraid`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci COMMENT='lista de recepcion de materiales' AUTO_INCREMENT=1 ;
-
---
--- Dumping data for table `lista_recepcion`
---
-
-
--- --------------------------------------------------------
-
---
--- Table structure for table `material_entrega`
---
-
-CREATE TABLE `material_entrega` (
-  `listaentregaid` int(5) NOT NULL,
-  `productoid` int(2) NOT NULL,
-  `numerodeserie` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
-  KEY `listaentregaid` (`listaentregaid`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci COMMENT='materiales instalados';
-
---
--- Dumping data for table `material_entrega`
---
-
-
--- --------------------------------------------------------
-
---
--- Table structure for table `material_recepcion`
---
-
-CREATE TABLE `material_recepcion` (
-  `listarecepcionid` int(5) NOT NULL,
-  `productoid` int(2) NOT NULL,
-  `numerodeserie` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
-  KEY `listarecepcionid` (`listarecepcionid`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci COMMENT='material rcibido';
-
---
--- Dumping data for table `material_recepcion`
---
-
 
 -- --------------------------------------------------------
 
@@ -362,58 +145,72 @@ CREATE TABLE `paquete` (
   `storage` varchar(25) COLLATE utf8_spanish_ci NOT NULL,
   PRIMARY KEY (`id`),
   KEY `nombre` (`nombre`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci COMMENT='Paquetes' AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci COMMENT='Paquetes' AUTO_INCREMENT=1 ;
 
 --
 -- Dumping data for table `paquete`
 --
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `compra_factura`
+--
+
+CREATE TABLE `cliente_compra_factura` (
+  `id` int(5) NOT NULL AUTO_INCREMENT,
+  `compraid` int(5) NOT NULL,
+  `fechapago` date NOT NULL,
+  `formapagoid` int(1) NOT NULL,
+  `transaccion` varchar(25) COLLATE utf8_spanish_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci COMMENT='facturas de compraas' AUTO_INCREMENT=1 ;
+
+--
+-- Dumping data for table `compra_factura`
+--
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `producto`
+-- Table structure for table `instalacion`
 --
 
-CREATE TABLE `producto` (
+CREATE TABLE `cliente_instalacion` (
+  `id` int(4) NOT NULL,
+  `contactoid` int(3) NOT NULL,
+  `ventaid` int(5) NOT NULL,
+  `instaladorid` int(3) NOT NULL,
+  `listadematerialid` int(5) NOT NULL,
+  `fecha` date NOT NULL,
+  `direccion` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
+  `ciudad` varchar(19) COLLATE utf8_spanish_ci NOT NULL,
+  `estado` varchar(19) COLLATE utf8_spanish_ci NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `facturaid` (`contactoid`,`ventaid`,`instaladorid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci COMMENT='instalaciones';
+
+--
+-- Dumping data for table `instalacion`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `departamento`
+--
+
+CREATE TABLE `empleado_departamento` (
   `id` int(2) NOT NULL AUTO_INCREMENT,
-  `modelo` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
+  `nombre` varchar(25) COLLATE utf8_spanish_ci NOT NULL,
   `descripcion` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `modelo` (`modelo`),
-  KEY `descripcion` (`descripcion`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci COMMENT='productos' AUTO_INCREMENT=1 ;
-
---
--- Dumping data for table `producto`
---
-
-
--- --------------------------------------------------------
-
---
--- Table structure for table `provedor`
---
-
-CREATE TABLE `provedor` (
-  `id` int(3) NOT NULL AUTO_INCREMENT,
-  `rfc` varchar(19) COLLATE utf8_spanish_ci NOT NULL,
-  `nombre` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
-  `direccion` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
-  `contacto` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
-  `puesto` varchar(19) COLLATE utf8_spanish_ci NOT NULL,
-  `telefono` varchar(25) COLLATE utf8_spanish_ci NOT NULL,
-  `email` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
-  `formapago` int(1) NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `rfc` (`rfc`),
   KEY `nombre` (`nombre`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci COMMENT='provedor' AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci COMMENT='departamentos' AUTO_INCREMENT=1 ;
 
 --
--- Dumping data for table `provedor`
+-- Dumping data for table `departamento`
 --
-
 
 -- --------------------------------------------------------
 
@@ -421,18 +218,17 @@ CREATE TABLE `provedor` (
 -- Table structure for table `puesto`
 --
 
-CREATE TABLE `puesto` (
+CREATE TABLE `empleado_puesto` (
   `id` int(2) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(15) COLLATE utf8_spanish_ci NOT NULL,
   `sueldoid` int(2) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `nombre` (`nombre`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci COMMENT='puestod' AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci COMMENT='puestod' AUTO_INCREMENT=1 ;
 
 --
 -- Dumping data for table `puesto`
 --
-
 
 -- --------------------------------------------------------
 
@@ -440,18 +236,42 @@ CREATE TABLE `puesto` (
 -- Table structure for table `sueldo`
 --
 
-CREATE TABLE `sueldo` (
+CREATE TABLE `empleado_sueldo` (
   `id` int(2) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(15) COLLATE utf8_spanish_ci NOT NULL,
   `cantidad` float NOT NULL,
   PRIMARY KEY (`id`),
   KEY `nombre` (`nombre`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci COMMENT='sueldos' AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci COMMENT='sueldos' AUTO_INCREMENT=1 ;
 
 --
 -- Dumping data for table `sueldo`
 --
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `empleados`
+--
+
+CREATE TABLE `empleado` (
+  `id` int(3) NOT NULL,
+  `departid` int(2) NOT NULL,
+  `puestoid` int(2) NOT NULL,
+  `ingreso` date NOT NULL,
+  `nombre` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
+  `paterno` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
+  `materno` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
+  `email` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
+  `numero` varchar(9) COLLATE utf8_spanish_ci NOT NULL,
+  `ext` varchar(4) COLLATE utf8_spanish_ci NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `departid` (`departid`,`puestoid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci COMMENT='empleados';
+
+--
+-- Dumping data for table `empleados`
+--
 
 -- --------------------------------------------------------
 
@@ -459,7 +279,7 @@ CREATE TABLE `sueldo` (
 -- Table structure for table `ventas`
 --
 
-CREATE TABLE `ventas` (
+CREATE TABLE `venta` (
   `id` int(5) NOT NULL AUTO_INCREMENT,
   `vendedorid` int(2) NOT NULL,
   `paqueteid` int(1) NOT NULL,
@@ -469,9 +289,170 @@ CREATE TABLE `ventas` (
   `fecha` date NOT NULL,
   PRIMARY KEY (`id`),
   KEY `vendedorid` (`vendedorid`,`clienteid`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci COMMENT='venta de paquetes' AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci COMMENT='venta de paquetes' AUTO_INCREMENT=1 ;
 
 --
 -- Dumping data for table `ventas`
 --
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `acceso`
+--
+
+CREATE TABLE `acceso` (
+  `id` int(3) NOT NULL COMMENT 'Users ID',
+  `username` varchar(25) COLLATE utf8_spanish_ci NOT NULL COMMENT 'Nombres de usuarios',
+  `password` varchar(19) COLLATE utf8_spanish_ci NOT NULL COMMENT 'Claves',
+  `type` char(1) COLLATE utf8_spanish_ci NOT NULL DEFAULT 'u' COMMENT 'Tipo de usurio',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `username` (`username`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci COMMENT='Autenticacion de  usuarios' AUTO_INCREMENT=4 ;
+
+--
+-- Dumping data for table `acceso`
+--
+
+-- INSERT INTO `acceso` VALUES(1, 'user', 'ee5ZZAg.T/1YM', 'u');
+-- INSERT INTO `acceso` VALUES(2, 'empleado', '08sqBXPrctEys', 'e');
+-- INSERT INTO `acceso` VALUES(3, 'admin', '21YJ.FGrwabtY', 'a');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cliente_factura`
+--
+
+-- CREATE TABLE `cliente_factura` (
+--   `id` int(5) NOT NULL,
+--   `rfcid` int(3) NOT NULL,
+--   `fecha` date NOT NULL,
+--   `cantidad` float NOT NULL,
+--   `ventaid` int(5) NOT NULL,
+--   `fecha_pago` tinyint(1) DEFAULT NULL,
+--   PRIMARY KEY (`id`),
+--   KEY `rfcid` (`rfcid`)
+-- ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci COMMENT='Info de Facturacion de clientes';
+
+--
+-- Dumping data for table `cliente_factura`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `compra`
+--
+
+-- CREATE TABLE `compra` (
+--   `id` int(5) NOT NULL AUTO_INCREMENT,
+--   `fecha` date NOT NULL,
+--   `provedorid` int(2) NOT NULL,
+--   `productoid` int(1) NOT NULL,
+--   `cantidad` int(2) NOT NULL,
+--   `total` float NOT NULL,
+--   PRIMARY KEY (`id`),
+--   KEY `provedorid` (`provedorid`)
+-- ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci COMMENT='compras' AUTO_INCREMENT=1 ;
+
+--
+-- Dumping data for table `compra`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `lista_entrega`
+--
+
+-- CREATE TABLE `lista_entrega` (
+--   `id` int(5) NOT NULL AUTO_INCREMENT,
+--   `facturaid` int(5) NOT NULL,
+--   `instalacionid` int(5) NOT NULL,
+--   PRIMARY KEY (`id`),
+--   UNIQUE KEY `facturaid` (`facturaid`,`instalacionid`)
+-- ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci COMMENT='lista de entrega' AUTO_INCREMENT=1 ;
+
+--
+-- Dumping data for table `lista_entrega`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `lista_recepcion`
+--
+
+-- CREATE TABLE `lista_recepcion` (
+--   `id` int(5) NOT NULL AUTO_INCREMENT,
+--   `compraid` int(5) NOT NULL,
+--   `fecha` date NOT NULL,
+--   PRIMARY KEY (`id`),
+--   KEY `compraid` (`compraid`)
+-- ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci COMMENT='lista de recepcion de materiales' AUTO_INCREMENT=1 ;
+
+--
+-- Dumping data for table `lista_recepcion`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `material_entrega`
+--
+
+-- CREATE TABLE `material_entrega` (
+--   `listaentregaid` int(5) NOT NULL,
+--   `productoid` int(2) NOT NULL,
+--   `numerodeserie` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
+--   KEY `listaentregaid` (`listaentregaid`)
+-- ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci COMMENT='materiales instalados';
+
+--
+-- Dumping data for table `material_entrega`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `material_recepcion`
+--
+
+-- CREATE TABLE `material_recepcion` (
+--   `listarecepcionid` int(5) NOT NULL,
+--   `productoid` int(2) NOT NULL,
+--   `numerodeserie` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
+--   KEY `listarecepcionid` (`listarecepcionid`)
+-- ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci COMMENT='material rcibido';
+
+--
+-- Dumping data for table `material_recepcion`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `provedor`
+--
+
+-- CREATE TABLE `provedor` (
+--   `id` int(3) NOT NULL AUTO_INCREMENT,
+--   `rfc` varchar(19) COLLATE utf8_spanish_ci NOT NULL,
+--   `nombre` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
+--   `direccion` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
+--   `contacto` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
+--   `puesto` varchar(19) COLLATE utf8_spanish_ci NOT NULL,
+--   `telefono` varchar(25) COLLATE utf8_spanish_ci NOT NULL,
+--   `email` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
+--   `formapago` int(1) NOT NULL,
+--   PRIMARY KEY (`id`),
+--   UNIQUE KEY `rfc` (`rfc`),
+--   KEY `nombre` (`nombre`)
+-- ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci COMMENT='provedor' AUTO_INCREMENT=1 ;
+
+--
+-- Dumping data for table `provedor`
+--
+
+
 
