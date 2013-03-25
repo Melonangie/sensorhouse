@@ -4,23 +4,34 @@
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
     <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <!-- Metas
+        ================================================== -->
         <title>Sensor House</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width">
-
+        <meta name="description" content="International Workshop on Green Supply Chain organized by the University of Artois in Arras France, from June 21st to June 22nd  2012"/>
+        <meta name="keywords" content="international, workshop, green, supply chain, artois, lgi2, GSC2012, GSC, university" />
+        <meta name="viewport" content="width=device-width"/>
+        <meta name="HandheldFriendly" content="True" />
+        <meta name="MobileOptimized" content="320" />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+        <meta http-equiv="cleartype" content="on" />
+        <!-- css
+        ================================================== -->
         <link rel="stylesheet" href="css/bootstrap.css">
         <link rel="stylesheet" href="css/bootstrap-responsive.css">
-
-        <script src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
-
-        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="img/ico/apple-touch-icon-144-precomposed.png">
-        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/ico/apple-touch-icon-114-precomposed.png">
-        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/ico/apple-touch-icon-72-precomposed.png">
-        <link rel="apple-touch-icon-precomposed" href="img/ico/apple-touch-icon-57-precomposed.png">
+        <!-- Javascript
+        ================================================== -->
+        <script src="js/vendor/jquery-1.9.1.min.js"></script>
+        <script src="js/vendor/bootstrap.min.js"></script>
+        <script src="js/lib/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+        <script src="js/lib/slicebox.js"></script>
+        <script src="js/functions.js"></script>
+        <!--[if IE]>
+                <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+        <!-- Favicons
+        ================================================== -->
         <link rel="shortcut icon" href="img/ico/favicon.png">
-
     </head>
     <body>
         <!--[if lt IE 7]>
@@ -85,75 +96,81 @@
             </div>
         </div>
 
-        <section>
-            <!-- slider-holder -->
-            <div class="slider-holder">
+        <!-- slider-holder -->
+        <div class="slider-holder">
+            <div class="container">
                 <!-- shell -->
                 <div class="shell">
-                    <span class="l"></span>
-                    <span class="r"></span>
-                    <span class="t"></span>
-                    <span class="b"></span>
+                    <ul id="sb-slider" class="sb-slider">
+                        <li>
+                            <a href="../img/slider/1.jpg" target="_blank"><img src="img/slider/1.jpg" alt="image1"/></a>
+                            <div class="sb-description">
+                                <h3>Creative Lifesaver</h3>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="../img/slider/2.jpg" target="_blank"><img src="img/slider/2.jpg" alt="image2"/></a>
+                            <div class="sb-description">
+                                <h3>Honest Entertainer</h3>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="http://www.flickr.com/photos/strupler/2968114825" target="_blank"><img src="img/slider/3.jpg" alt="image1"/></a>
+                            <div class="sb-description">
+                                <h3>Brave Astronaut</h3>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="http://www.flickr.com/photos/strupler/2968122059" target="_blank"><img src="img/slider/4.jpg" alt="image1"/></a>
+                            <div class="sb-description">
+                                <h3>Affectionate Decision Maker</h3>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="http://www.flickr.com/photos/strupler/2969119944" target="_blank"><img src="img/slider/5.jpg" alt="image1"/></a>
+                            <div class="sb-description">
+                                <h3>Faithful Investor</h3>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="http://www.flickr.com/photos/strupler/2968126177" target="_blank"><img src="img/slider/6.jpg" alt="image1"/></a>
+                            <div class="sb-description">
+                                <h3>Groundbreaking Artist</h3>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="http://www.flickr.com/photos/strupler/2968945158" target="_blank"><img src="img/slider/7.jpg" alt="image1"/></a>
+                            <div class="sb-description">
+                                <h3>Selfless Philantropist</h3>
+                            </div>
+                        </li>
+                    </ul>
+                    <div id="shadow" class="shadow"></div>
                     <a href="#" class="slider-btn">Explore Our Showcase</a>
-                    <!-- slider -->
-                    <div class="slider flexslider">
-                        <ul class="slides">
-                            <li>
-                                <img src="../img/slider/slide-02.png" alt="" />
-                                <div class="slide-cnt">
-                                    <div class="box-t"></div>
-                                    <div class="box-c">
-                                        <div class="box-cnt">
-                                            <h2>Lorem Ipsum Dolor Sit Amet</h2>
-                                            <p>Donec vehicula odio quis lobortis varius, quam nibh pulvinar eros, sed aliquam orci sem nec ipsum. Nunc sed felis vitae nisl faucibus convallis sit amet eget dolor. Fusce sodales consectetur adipiscing. Nunc nulla mauris, blandit nec dapibus porta, porta tempus lectus. </p>
-                                        </div>
-                                        <div class="cl">&nbsp;</div>
-                                    </div>
-                                    <div class="box-b"></div>
-                                </div>	
-                            </li>
-                            <li>
-                                <img src="../img/slider/slide-03.png" alt="" />
-                                <div class="slide-cnt">
-                                    <div class="box-t"></div>
-                                    <div class="box-c">
-                                        <div class="box-cnt">
-                                            <h2>Lorem Ipsum Dolor Sit Amet</h2>
-                                            <p>Donec vehicula odio quis lobortis varius, quam nibh pulvinar eros, sed aliquam orci sem nec ipsum. Nunc sed felis vitae nisl faucibus convallis sit amet eget dolor. Fusce sodales consectetur adipiscing. Nunc nulla mauris, blandit nec dapibus porta, porta tempus lectus. </p>
-                                        </div>
-                                        <div class="cl">&nbsp;</div>
-                                    </div>
-                                    <div class="box-b"></div>
-                                </div>	
-                            </li>
-                        </ul>
-                    </div>
-                    <!-- end of slider -->
-                </div>
-                <!-- end of shell -->	
+                </div>	
             </div>	
-            <!-- end of slider-holder -->
+        </div>
 
-            <!-- Example row of columns -->
-            <div class="container">
-                <div class="row">
-                    <div class="span4">
-                        <h2>Heading</h2>
-                        <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-                        <p><a class="btn" href="#">View details &raquo;</a></p>
-                    </div>
-                    <div class="span4">
-                        <h2>Heading</h2>
-                        <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-                        <p><a class="btn" href="#">View details &raquo;</a></p>
-                    </div>
-                    <div class="span4">
-                        <h2>Heading</h2>
-                        <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-                        <p><a class="btn" href="#">View details &raquo;</a></p>
-                    </div>
-                </div></div>
-        </section> <!-- /container -->
+        <!-- Example row of columns -->
+        <div class="container">
+            <div class="row">
+                <div class="span4">
+                    <h2>Heading</h2>
+                    <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+                    <p><a class="btn" href="#">View details &raquo;</a></p>
+                </div>
+                <div class="span4">
+                    <h2>Heading</h2>
+                    <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+                    <p><a class="btn" href="#">View details &raquo;</a></p>
+                </div>
+                <div class="span4">
+                    <h2>Heading</h2>
+                    <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+                    <p><a class="btn" href="#">View details &raquo;</a></p>
+                </div>
+            </div>
+        </div><!-- /container -->
 
         <footer>
             <div class="container">
@@ -168,11 +185,6 @@
             </div>
         </footer>
     </body>
-
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
-    <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.1.js"><\/script>')</script>
-    <script src="js/vendor/bootstrap.min.js"></script>
-    <script src="js/functions.js"></script>
 
     <script>
         var _gaq = [['_setAccount', 'UA-XXXXX-X'], ['_trackPageview']];
