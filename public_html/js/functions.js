@@ -19,3 +19,7 @@ $(window).load(function() {
 		animationDuration: 900
 	});
 });
+
+    $('.carousel').carousel({
+    interval: 2000
+    })
