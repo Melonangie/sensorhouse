@@ -1,16 +1,17 @@
 <?php
-
 /**
- * Description of paginas
- *
+ * Clase que despliega contenido de paginas a un visitante no logeado
  * @author angie
  */
 class paginas {
 
     function paginas() {
-        
     }
-
+    
+    /**
+     * Funcion que busca el archivo solicitado
+     * @param type $action link
+     */
     function doAction($action) {
         switch ($action) {
             case "index" : $this->home();

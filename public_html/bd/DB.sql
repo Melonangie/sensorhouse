@@ -1,458 +1,253 @@
-
--- phpMyAdmin SQL Dump
--- version 2.11.4
--- http://www.phpmyadmin.net
---
--- Host: localhost
--- Generation Time: Mar 25, 2013 at 03:50 AM
--- Server version: 5.1.57
--- PHP Version: 5.2.17
-
-SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
-
---
--- Database: `a7599453_enterpr` InnoDB
---
-
--- --------------------------------------------------------
-
---
--- Table structure for table `cliente_rfc`
---
-
-CREATE TABLE `cliente_rfc` (
-  `id` int(3) NOT NULL AUTO_INCREMENT,
-  `rfc` varchar(19) COLLATE utf8_spanish_ci NOT NULL,
-  `nombre` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
-  `direccion` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
-  `ciudad` varchar(19) COLLATE utf8_spanish_ci NOT NULL,
-  `estado` varchar(19) COLLATE utf8_spanish_ci NOT NULL,
-  `alta` date NOT NULL,
-  `fechaFact` date NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `rfc` (`rfc`),
-  KEY `nombre` (`nombre`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci COMMENT='rfc de facturacion' AUTO_INCREMENT=1 ;
-
---
--- Dumping data for table `cliente_rfc`
---
-
--- --------------------------------------------------------
-
---
--- Table structure for table `forma_pago`
---
-
-CREATE TABLE `cliente_forma_pago` (
-  `id` int(1) NOT NULL AUTO_INCREMENT,
-  `tipo` varchar(19) COLLATE utf8_spanish_ci NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `tipo` (`tipo`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci COMMENT='forma de pago' AUTO_INCREMENT=1 ;
-
---
--- Dumping data for table `forma_pago`
---
-
--- --------------------------------------------------------
-
---
--- Table structure for table `contacto`
---
-
-CREATE TABLE `cliente_contacto` (
-  `id` int(3) NOT NULL AUTO_INCREMENT COMMENT 'id del contacto',
-  `userid` varchar(25) COLLATE utf8_spanish_ci NOT NULL COMMENT 'Nombre de usuarios',
-  `rfcid` int(3) NOT NULL,
-  `instalacionid` int(3) NOT NULL COMMENT 'tipo de sistema',
-  `paqueteid` int(2) NOT NULL,
-  `nombre` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
-  `paterno` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
-  `materno` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `userid` (`userid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci COMMENT='nombre de contactos' AUTO_INCREMENT=1 ;
-
---
--- Dumping data for table `contacto`
---
-
--- --------------------------------------------------------
-
---
--- Table structure for table `contacto_tel`
---
-
-CREATE TABLE `cliente_contacto_tel` (
-  `contactoID` int(3) NOT NULL COMMENT 'id del usuario',
-  `tipo` varchar(15) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL COMMENT 'tipo de telefono',
-  `numero` varchar(25) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
-  KEY `contactoID` (`contactoID`)
-) ENGINE=InnoDB DEFAULT CHARSET=ucs2 COLLATE=ucs2_spanish_ci COMMENT='telefonos de contactos';
-
---
--- Dumping data for table `contacto_tel`
---
-
--- --------------------------------------------------------
-
---
--- Table structure for table `contacto_email`
---
-
-CREATE TABLE `cliente_contacto_email` (
-  `contactoID` int(3) NOT NULL COMMENT 'id del contacto',
-  `email` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
-  KEY `contactoID` (`contactoID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci COMMENT='email de contactos';
-
---
--- Dumping data for table `contacto_email`
---
-
--- --------------------------------------------------------
-
---
--- Table structure for table `producto`
---
-
-CREATE TABLE `paquete_productos` (
-  `id` int(2) NOT NULL AUTO_INCREMENT,
-  `modelo` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
-  `descripcion` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `modelo` (`modelo`),
-  KEY `descripcion` (`descripcion`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci COMMENT='productos' AUTO_INCREMENT=1 ;
-
---
--- Dumping data for table `producto`
---
-
--- --------------------------------------------------------
-
---
--- Table structure for table `paquete`
---
-
-CREATE TABLE `paquete` (
-  `id` int(1) NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(25) COLLATE utf8_spanish_ci NOT NULL,
-  `precio` float NOT NULL,
-  `no_camaras` int(2) NOT NULL,
-  `productoid` int(2) NOT NULL,
-  `storage` varchar(25) COLLATE utf8_spanish_ci NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `nombre` (`nombre`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci COMMENT='Paquetes' AUTO_INCREMENT=1 ;
-
---
--- Dumping data for table `paquete`
---
-
--- --------------------------------------------------------
-
---
--- Table structure for table `compra_factura`
---
-
-CREATE TABLE `cliente_compra_factura` (
-  `id` int(5) NOT NULL AUTO_INCREMENT,
-  `compraid` int(5) NOT NULL,
-  `fechapago` date NOT NULL,
-  `formapagoid` int(1) NOT NULL,
-  `transaccion` varchar(25) COLLATE utf8_spanish_ci NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci COMMENT='facturas de compraas' AUTO_INCREMENT=1 ;
-
---
--- Dumping data for table `compra_factura`
---
-
--- --------------------------------------------------------
-
---
--- Table structure for table `instalacion`
---
-
-CREATE TABLE `cliente_instalacion` (
-  `id` int(4) NOT NULL,
-  `contactoid` int(3) NOT NULL,
-  `ventaid` int(5) NOT NULL,
-  `instaladorid` int(3) NOT NULL,
-  `listadematerialid` int(5) NOT NULL,
-  `fecha` date NOT NULL,
-  `direccion` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
-  `ciudad` varchar(19) COLLATE utf8_spanish_ci NOT NULL,
-  `estado` varchar(19) COLLATE utf8_spanish_ci NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `facturaid` (`contactoid`,`ventaid`,`instaladorid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci COMMENT='instalaciones';
-
---
--- Dumping data for table `instalacion`
---
-
--- --------------------------------------------------------
-
---
--- Table structure for table `departamento`
---
-
-CREATE TABLE `empleado_departamento` (
-  `id` int(2) NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(25) COLLATE utf8_spanish_ci NOT NULL,
-  `descripcion` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `nombre` (`nombre`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci COMMENT='departamentos' AUTO_INCREMENT=1 ;
-
---
--- Dumping data for table `departamento`
---
-
--- --------------------------------------------------------
-
---
--- Table structure for table `puesto`
---
-
-CREATE TABLE `empleado_puesto` (
-  `id` int(2) NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(15) COLLATE utf8_spanish_ci NOT NULL,
-  `sueldoid` int(2) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `nombre` (`nombre`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci COMMENT='puestod' AUTO_INCREMENT=1 ;
-
---
--- Dumping data for table `puesto`
---
-
--- --------------------------------------------------------
-
---
--- Table structure for table `sueldo`
---
-
-CREATE TABLE `empleado_sueldo` (
-  `id` int(2) NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(15) COLLATE utf8_spanish_ci NOT NULL,
-  `cantidad` float NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `nombre` (`nombre`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci COMMENT='sueldos' AUTO_INCREMENT=1 ;
-
---
--- Dumping data for table `sueldo`
---
-
--- --------------------------------------------------------
-
---
--- Table structure for table `empleados`
---
-
-CREATE TABLE `empleado` (
-  `id` int(3) NOT NULL,
-  `departid` int(2) NOT NULL,
-  `puestoid` int(2) NOT NULL,
-  `ingreso` date NOT NULL,
-  `nombre` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
-  `paterno` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
-  `materno` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
-  `email` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
-  `numero` varchar(9) COLLATE utf8_spanish_ci NOT NULL,
-  `ext` varchar(4) COLLATE utf8_spanish_ci NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `departid` (`departid`,`puestoid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci COMMENT='empleados';
-
---
--- Dumping data for table `empleados`
---
-
--- --------------------------------------------------------
-
---
--- Table structure for table `ventas`
---
-
-CREATE TABLE `venta` (
-  `id` int(5) NOT NULL AUTO_INCREMENT,
-  `vendedorid` int(2) NOT NULL,
-  `paqueteid` int(1) NOT NULL,
-  `total` float NOT NULL,
-  `clienteid` int(3) NOT NULL,
-  `formapago` int(1) NOT NULL,
-  `fecha` date NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `vendedorid` (`vendedorid`,`clienteid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci COMMENT='venta de paquetes' AUTO_INCREMENT=1 ;
-
---
--- Dumping data for table `ventas`
---
--- --------------------------------------------------------
-
---
--- Table structure for table `acceso`
---
-
-CREATE TABLE `acceso` (
-  `id` int(3) NOT NULL COMMENT 'Users ID',
-  `username` varchar(25) COLLATE utf8_spanish_ci NOT NULL COMMENT 'Nombres de usuarios',
-  `password` varchar(19) COLLATE utf8_spanish_ci NOT NULL COMMENT 'Claves',
-  `type` char(1) COLLATE utf8_spanish_ci NOT NULL DEFAULT 'u' COMMENT 'Tipo de usurio',
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `username` (`username`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci COMMENT='Autenticacion de  usuarios' AUTO_INCREMENT=4 ;
-
---
--- Dumping data for table `acceso`
---
-
--- INSERT INTO `acceso` VALUES(1, 'user', 'ee5ZZAg.T/1YM', 'u');
--- INSERT INTO `acceso` VALUES(2, 'empleado', '08sqBXPrctEys', 'e');
--- INSERT INTO `acceso` VALUES(3, 'admin', '21YJ.FGrwabtY', 'a');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `cliente_factura`
---
-
--- CREATE TABLE `cliente_factura` (
---   `id` int(5) NOT NULL,
---   `rfcid` int(3) NOT NULL,
---   `fecha` date NOT NULL,
---   `cantidad` float NOT NULL,
---   `ventaid` int(5) NOT NULL,
---   `fecha_pago` tinyint(1) DEFAULT NULL,
---   PRIMARY KEY (`id`),
---   KEY `rfcid` (`rfcid`)
--- ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci COMMENT='Info de Facturacion de clientes';
-
---
--- Dumping data for table `cliente_factura`
---
-
--- --------------------------------------------------------
-
---
--- Table structure for table `compra`
---
-
--- CREATE TABLE `compra` (
---   `id` int(5) NOT NULL AUTO_INCREMENT,
---   `fecha` date NOT NULL,
---   `provedorid` int(2) NOT NULL,
---   `productoid` int(1) NOT NULL,
---   `cantidad` int(2) NOT NULL,
---   `total` float NOT NULL,
---   PRIMARY KEY (`id`),
---   KEY `provedorid` (`provedorid`)
--- ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci COMMENT='compras' AUTO_INCREMENT=1 ;
-
---
--- Dumping data for table `compra`
---
-
--- --------------------------------------------------------
-
---
--- Table structure for table `lista_entrega`
---
-
--- CREATE TABLE `lista_entrega` (
---   `id` int(5) NOT NULL AUTO_INCREMENT,
---   `facturaid` int(5) NOT NULL,
---   `instalacionid` int(5) NOT NULL,
---   PRIMARY KEY (`id`),
---   UNIQUE KEY `facturaid` (`facturaid`,`instalacionid`)
--- ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci COMMENT='lista de entrega' AUTO_INCREMENT=1 ;
-
---
--- Dumping data for table `lista_entrega`
---
-
--- --------------------------------------------------------
-
---
--- Table structure for table `lista_recepcion`
---
-
--- CREATE TABLE `lista_recepcion` (
---   `id` int(5) NOT NULL AUTO_INCREMENT,
---   `compraid` int(5) NOT NULL,
---   `fecha` date NOT NULL,
---   PRIMARY KEY (`id`),
---   KEY `compraid` (`compraid`)
--- ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci COMMENT='lista de recepcion de materiales' AUTO_INCREMENT=1 ;
-
---
--- Dumping data for table `lista_recepcion`
---
-
--- --------------------------------------------------------
-
---
--- Table structure for table `material_entrega`
---
-
--- CREATE TABLE `material_entrega` (
---   `listaentregaid` int(5) NOT NULL,
---   `productoid` int(2) NOT NULL,
---   `numerodeserie` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
---   KEY `listaentregaid` (`listaentregaid`)
--- ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci COMMENT='materiales instalados';
-
---
--- Dumping data for table `material_entrega`
---
-
--- --------------------------------------------------------
-
---
--- Table structure for table `material_recepcion`
---
-
--- CREATE TABLE `material_recepcion` (
---   `listarecepcionid` int(5) NOT NULL,
---   `productoid` int(2) NOT NULL,
---   `numerodeserie` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
---   KEY `listarecepcionid` (`listarecepcionid`)
--- ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci COMMENT='material rcibido';
-
---
--- Dumping data for table `material_recepcion`
---
-
--- --------------------------------------------------------
-
---
--- Table structure for table `provedor`
---
-
--- CREATE TABLE `provedor` (
---   `id` int(3) NOT NULL AUTO_INCREMENT,
---   `rfc` varchar(19) COLLATE utf8_spanish_ci NOT NULL,
---   `nombre` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
---   `direccion` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
---   `contacto` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
---   `puesto` varchar(19) COLLATE utf8_spanish_ci NOT NULL,
---   `telefono` varchar(25) COLLATE utf8_spanish_ci NOT NULL,
---   `email` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
---   `formapago` int(1) NOT NULL,
---   PRIMARY KEY (`id`),
---   UNIQUE KEY `rfc` (`rfc`),
---   KEY `nombre` (`nombre`)
--- ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci COMMENT='provedor' AUTO_INCREMENT=1 ;
-
---
--- Dumping data for table `provedor`
---
-
-
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
+
+CREATE SCHEMA IF NOT EXISTS `sensorhouse` DEFAULT CHARACTER SET utf8 COLLATE utf8_spanish2_ci ;
+USE `sensorhouse` ;
+
+-- -----------------------------------------------------
+-- Table `sensorhouse`.`cliente`
+-- -----------------------------------------------------
+CREATE  TABLE IF NOT EXISTS `sensorhouse`.`cliente` (
+  `idcliente` MEDIUMINT NOT NULL AUTO_INCREMENT COMMENT 'id del client que factura' ,
+  `rfc` VARCHAR(13) NOT NULL COMMENT 'rfc de facturacion' ,
+  `razon` VARCHAR(45) NOT NULL COMMENT 'razón social' ,
+  `inscripcion` DATETIME NOT NULL COMMENT 'fecha de alta' ,
+  PRIMARY KEY (`idcliente`) ,
+  UNIQUE INDEX `rfc_UNIQUE` (`rfc` ASC) )
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `sensorhouse`.`material`
+-- -----------------------------------------------------
+CREATE  TABLE IF NOT EXISTS `sensorhouse`.`material` (
+  `idmaterial` TINYINT NOT NULL AUTO_INCREMENT COMMENT 'id del producto' ,
+  `modelo` VARCHAR(45) NOT NULL COMMENT 'nombre o modelo del producto' ,
+  `descripcion` VARCHAR(255) NOT NULL COMMENT 'Descripcion de producto' ,
+  `foto` VARCHAR(45) NULL ,
+  PRIMARY KEY (`idmaterial`) ,
+  UNIQUE INDEX `modelo_UNIQUE` (`modelo` ASC) )
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `sensorhouse`.`pago`
+-- -----------------------------------------------------
+CREATE  TABLE IF NOT EXISTS `sensorhouse`.`pago` (
+  `idpago` TINYINT NOT NULL AUTO_INCREMENT COMMENT 'id del tipo de pago' ,
+  `descripcion` VARCHAR(20) NOT NULL COMMENT 'Tipo de pago' ,
+  PRIMARY KEY (`idpago`) ,
+  UNIQUE INDEX `descripcion_UNIQUE` (`descripcion` ASC) )
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `sensorhouse`.`plan`
+-- -----------------------------------------------------
+CREATE  TABLE IF NOT EXISTS `sensorhouse`.`plan` (
+  `idplan` TINYINT NOT NULL AUTO_INCREMENT COMMENT 'id del plan' ,
+  `nombre` VARCHAR(45) NOT NULL COMMENT 'Nombre del plan' ,
+  `precio` FLOAT NOT NULL COMMENT 'Precio del plan' ,
+  `storage` DECIMAL(1,0) NOT NULL COMMENT 'Capacidad de almacenamiento' ,
+  PRIMARY KEY (`idplan`) ,
+  UNIQUE INDEX `nombre_UNIQUE` (`nombre` ASC) )
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `sensorhouse`.`cliente_contacto`
+-- -----------------------------------------------------
+CREATE  TABLE IF NOT EXISTS `sensorhouse`.`cliente_contacto` (
+  `idcliente_contacto` MEDIUMINT NOT NULL AUTO_INCREMENT COMMENT 'id del contacto' ,
+  `id_cliente` MEDIUMINT NOT NULL COMMENT 'id del cliente' ,
+  `nombre` VARCHAR(45) NOT NULL ,
+  `paterno` VARCHAR(45) NOT NULL ,
+  `materno` VARCHAR(45) NOT NULL ,
+  `descripcion` VARCHAR(45) NULL ,
+  PRIMARY KEY (`idcliente_contacto`) ,
+  INDEX `fk_cliente_contacto_cliente_idx` (`id_cliente` ASC) ,
+  CONSTRAINT `fk_cliente_contacto_cliente`
+    FOREIGN KEY (`id_cliente` )
+    REFERENCES `sensorhouse`.`cliente` (`idcliente` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `sensorhouse`.`cliente_plan`
+-- -----------------------------------------------------
+CREATE  TABLE IF NOT EXISTS `sensorhouse`.`cliente_plan` (
+  `idcliente_plan` MEDIUMINT NOT NULL AUTO_INCREMENT COMMENT 'Id del plan del  cliente' ,
+  `id_cliente` MEDIUMINT NOT NULL COMMENT 'Id del cliente' ,
+  `id_plan` TINYINT NOT NULL COMMENT 'Id del plan' ,
+  `id_pago` TINYINT NOT NULL COMMENT 'Id del tipo de pago' ,
+  PRIMARY KEY (`idcliente_plan`) ,
+  INDEX `fk_cliente_plan_cliente1_idx` (`id_cliente` ASC) ,
+  INDEX `fk_cliente_plan_pago1_idx` (`id_pago` ASC) ,
+  INDEX `fk_cliente_plan_plan1_idx` (`id_plan` ASC) ,
+  CONSTRAINT `fk_cliente_plan_cliente1`
+    FOREIGN KEY (`id_cliente` )
+    REFERENCES `sensorhouse`.`cliente` (`idcliente` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_cliente_plan_pago1`
+    FOREIGN KEY (`id_pago` )
+    REFERENCES `sensorhouse`.`pago` (`idpago` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_cliente_plan_plan1`
+    FOREIGN KEY (`id_plan` )
+    REFERENCES `sensorhouse`.`plan` (`idplan` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `sensorhouse`.`cliente_instalacion`
+-- -----------------------------------------------------
+CREATE  TABLE IF NOT EXISTS `sensorhouse`.`cliente_instalacion` (
+  `idcliente_instalacion` MEDIUMINT NOT NULL AUTO_INCREMENT COMMENT 'Id de la instalacion' ,
+  `id_cliente_plan` MEDIUMINT NOT NULL COMMENT 'Id del plan del cliente que se instalo' ,
+  `fecha` DATETIME NOT NULL COMMENT 'Fecha de la instalacion' ,
+  `direccion` VARCHAR(45) NOT NULL ,
+  `ciudad` VARCHAR(45) NOT NULL ,
+  `estado` VARCHAR(45) NOT NULL ,
+  `pais` VARCHAR(45) NOT NULL DEFAULT 'Mexico' ,
+  PRIMARY KEY (`idcliente_instalacion`) ,
+  INDEX `fk_cliente_instalacion_cliente_plan1_idx` (`id_cliente_plan` ASC) ,
+  UNIQUE INDEX `id_plan_UNIQUE` (`id_cliente_plan` ASC) ,
+  CONSTRAINT `fk_cliente_instalacion_cliente_plan1`
+    FOREIGN KEY (`id_cliente_plan` )
+    REFERENCES `sensorhouse`.`cliente_plan` (`idcliente_plan` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `sensorhouse`.`cliente_contacto_email`
+-- -----------------------------------------------------
+CREATE  TABLE IF NOT EXISTS `sensorhouse`.`cliente_contacto_email` (
+  `idcliente_email` MEDIUMINT NOT NULL AUTO_INCREMENT COMMENT 'Id del email' ,
+  `id_cliente_contato` MEDIUMINT NOT NULL COMMENT 'Id del contacto' ,
+  `email` VARCHAR(45) NOT NULL ,
+  `descripcion` VARCHAR(45) NOT NULL ,
+  PRIMARY KEY (`idcliente_email`) ,
+  UNIQUE INDEX `email_UNIQUE` (`email` ASC) ,
+  INDEX `fk_cliente_contacto_email_cliente_contacto1_idx` (`id_cliente_contato` ASC) ,
+  CONSTRAINT `fk_cliente_contacto_email_cliente_contacto1`
+    FOREIGN KEY (`id_cliente_contato` )
+    REFERENCES `sensorhouse`.`cliente_contacto` (`idcliente_contacto` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `sensorhouse`.`cliente_contacto_telefono`
+-- -----------------------------------------------------
+CREATE  TABLE IF NOT EXISTS `sensorhouse`.`cliente_contacto_telefono` (
+  `idcliente_contacto_telefono` MEDIUMINT NOT NULL AUTO_INCREMENT COMMENT 'Id del telefono' ,
+  `id_cliente_contacto` MEDIUMINT NOT NULL ,
+  `numero` VARCHAR(25) NOT NULL ,
+  `tipo` VARCHAR(25) NOT NULL ,
+  PRIMARY KEY (`idcliente_contacto_telefono`) ,
+  UNIQUE INDEX `numero_UNIQUE` (`numero` ASC) ,
+  INDEX `fk_cliente_contacto_telefono_cliente_contacto1_idx` (`id_cliente_contacto` ASC) ,
+  CONSTRAINT `fk_cliente_contacto_telefono_cliente_contacto1`
+    FOREIGN KEY (`id_cliente_contacto` )
+    REFERENCES `sensorhouse`.`cliente_contacto` (`idcliente_contacto` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `sensorhouse`.`plan_materiales`
+-- -----------------------------------------------------
+CREATE  TABLE IF NOT EXISTS `sensorhouse`.`plan_materiales` (
+  `idplan_material` MEDIUMINT NOT NULL AUTO_INCREMENT COMMENT 'Id de un producto en un plan' ,
+  `id_plan` TINYINT NOT NULL COMMENT 'Id del plan' ,
+  `id_material` TINYINT NOT NULL COMMENT 'ID el material' ,
+  `cantidad` TINYINT NOT NULL COMMENT 'Cantdad de materiales en el plan' ,
+  PRIMARY KEY (`idplan_material`) ,
+  UNIQUE INDEX `id_material_UNIQUE` (`id_material` ASC) ,
+  INDEX `fk_plan_material_plan1_idx` (`id_plan` ASC) ,
+  CONSTRAINT `fk_plan_material_plan1`
+    FOREIGN KEY (`id_plan` )
+    REFERENCES `sensorhouse`.`plan` (`idplan` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_plan_material_material1`
+    FOREIGN KEY (`id_material` )
+    REFERENCES `sensorhouse`.`material` (`idmaterial` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `sensorhouse`.`cliente_videos`
+-- -----------------------------------------------------
+CREATE  TABLE IF NOT EXISTS `sensorhouse`.`cliente_videos` (
+  `idcliente_videos` MEDIUMINT NOT NULL AUTO_INCREMENT COMMENT 'Id del video' ,
+  `id_cliente` MEDIUMINT NOT NULL COMMENT 'Id del cliente' ,
+  `fecha` DATETIME NOT NULL ,
+  `descripcion` VARCHAR(45) NULL ,
+  PRIMARY KEY (`idcliente_videos`) ,
+  INDEX `fk_cliente_videos_cliente1_idx` (`id_cliente` ASC) ,
+  CONSTRAINT `fk_cliente_videos_cliente1`
+    FOREIGN KEY (`id_cliente` )
+    REFERENCES `sensorhouse`.`cliente` (`idcliente` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `sensorhouse`.`cliente_fotos`
+-- -----------------------------------------------------
+CREATE  TABLE IF NOT EXISTS `sensorhouse`.`cliente_fotos` (
+  `idcliente_fotos` MEDIUMINT NOT NULL AUTO_INCREMENT COMMENT 'Id de la foto' ,
+  `id_cliente` MEDIUMINT NOT NULL ,
+  `fecha` DATETIME NOT NULL ,
+  `descripcion` VARCHAR(45) NULL ,
+  PRIMARY KEY (`idcliente_fotos`) ,
+  INDEX `fk_cliente_fotos_cliente1_idx` (`id_cliente` ASC) ,
+  CONSTRAINT `fk_cliente_fotos_cliente1`
+    FOREIGN KEY (`id_cliente` )
+    REFERENCES `sensorhouse`.`cliente` (`idcliente` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `sensorhouse`.`acceso`
+-- -----------------------------------------------------
+CREATE  TABLE IF NOT EXISTS `sensorhouse`.`acceso` (
+  `idcliente_usuario` MEDIUMINT NOT NULL AUTO_INCREMENT COMMENT 'Id del username' ,
+  `id_cliente` MEDIUMINT NOT NULL COMMENT 'Id del cliente' ,
+  `username` VARCHAR(45) NOT NULL COMMENT 'Un usuario por cliente' ,
+  `password` VARCHAR(60) NOT NULL ,
+  `admin` ENUM('no','si') NOT NULL DEFAULT 'no' COMMENT 'Es administrador' ,
+  PRIMARY KEY (`idcliente_usuario`) ,
+  UNIQUE INDEX `usuario_UNIQUE` (`username` ASC) ,
+  UNIQUE INDEX `id_cliente_UNIQUE` (`id_cliente` ASC) ,
+  CONSTRAINT `fk_cliente_usuario_cliente1`
+    FOREIGN KEY (`id_cliente` )
+    REFERENCES `sensorhouse`.`cliente` (`idcliente` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+USE `sensorhouse` ;
+
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
