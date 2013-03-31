@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Clase que despliega contenido de paginas a un visitante no logeado
  * @author angie
@@ -6,44 +7,47 @@
 class paginas {
 
     function paginas() {
+        
     }
-    
+
     /**
      * Funcion que busca el archivo solicitado
      * @param type $action link
      */
-    function doAction($action) {
-        switch ($action) {
+    function doAction($pagina) {
+        switch ($pagina) {
             case "index" : $this->home();
                 break;
             case "presentacion" : $this->aboutus();
                 break;
-            case "planes" : $this->oursolutions();
+            case "soluciones" : $this->oursolutions();
                 break;
-            case "checkConnection" : $this->checkConnection();
+            case "conectar" : $this->checkConnection();
                 break;
             case "tienda" : $this->store();
                 break;
             case "documentacion" : $this->documentation();
+                break;
+            case "contactar" : $this->contactus();
                 break;
             default : $this->home();
         }
     }
 
     function home() {
-        include('./pagesVisitor/home.inc.php');
+        include('./paginasVisitor/home.inc.php');
     }
 
     function aboutus() {
-        include('./pagesVisitor/presentacion.inc.php');
+        include('./paginasVisitor/presentacion.inc.php');
     }
 
     function oursolutions() {
-        include('./pagesVisitor/planes.inc.php');
+        include('./paginasVisitor/soluciones.inc.php');
     }
 
     function checkConnection() {
-        include('./functions/checkConnection.func.php');
+        include('./funciones/conectar.func.php');
     }
 
     function store() {
@@ -51,9 +55,12 @@ class paginas {
     }
 
     function documentation() {
-        include('./pagesVisitor/documentacion.inc.php');
+        include('./paginasVisitor/documentacion.inc.php');
     }
 
+    function contactus() {
+        include('./paginasVisitor/contactar.inc.php');
+    }
+    
 }
-
 ?>

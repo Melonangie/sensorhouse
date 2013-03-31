@@ -33,6 +33,8 @@
         <script src="js/vendor/bootstrap.min.js"></script>
         <script src="js/lib/modernizr-2.6.2-respond-1.1.0.min.js"></script>
         <script src="js/lib/slicebox.js"></script>
+        <script src="js/lib/jquery-lang.js"></script>
+        <script src="js/lib/langpack/es.js"></script>
         <script src="js/functions.js"></script>
         <!--[if IE]>
                 <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>

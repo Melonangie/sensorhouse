@@ -5,10 +5,17 @@
 include_once ('./BD/user.sql.php');
 echo '<section><h1> Verification de Connexion </h1><article>';
 
-if (isset($_POST['connexion']) && $_POST['connexion'] == 'Connexion' && (isset($_SESSION['token_time'])) && (isset($_SESSION['token'])) && (isset($_POST['token'])) && $_POST['token'] == $_SESSION['token']) {
-	$token_age = time() - $_SESSION['token_time'];
-	if ((isset($_POST['login']) && !empty($_POST['login'])) && (isset($_POST['pass']) && !empty($_POST['pass'])) && $token_age <= 300 ) {
-	// Test if the login and password are defined.
+if (isset($_POST['connexion']) && $_POST['connexion'] == 'Connexion' && 
+        (isset($_SESSION['token_time'])) && 
+        (isset($_SESSION['token'])) && 
+        (isset($_POST['token'])) && 
+        $_POST['token'] == $_SESSION['token']) {
+            $token_age = time() - $_SESSION['token_time'];
+            if ((isset($_POST['login']) && !empty($_POST['login'])) && 
+                    (isset($_POST['pass']) && 
+                    !empty($_POST['pass'])) && 
+                    $token_age <= 300 ) {
+                // Test if the login and password are defined.
 		$db = new BD();
 		//extract($_POST);   je vous renvoie à la doc de cette fonction
 		$exist = existID($_POST['login'], $_POST['pass'], $db);

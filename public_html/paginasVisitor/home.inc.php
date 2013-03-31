@@ -1,6 +1,7 @@
 <!-- slider-holder -->
         <div class="slider-holder">
             <div class="container">
+               
                 <!-- shell -->
                 <div class="shell">
                     <ul id="sb-slider" class="sb-slider">
@@ -58,7 +59,10 @@
             <div class="row">
                 <div class="span4">
                     <h2>Heading</h2>
-                    <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+                     <a href="javascript:window.lang.change('en');">En Espa&ntilde;ol</a> | <a href="javascript:window.lang.change('es');">English</a>
+                     <?php if (isset($_SESSION['login']))
+                     echo  $_SESSION['login'];?>
+                     <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
                     <p><a class="btn" href="#">View details &raquo;</a></p>
                 </div>
                 <div class="span4">

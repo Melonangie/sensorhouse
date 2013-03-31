@@ -1,44 +1,33 @@
 <?php
+
 /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
 
-session_start();
+
+//header
 include ('./includes/header.php');
 
-// Operations classiques
-include_once ('./functions/paginas.class.php');
-// Operations des membres
-//    include_once ('./functions/operationMembre.class.php');
-//    // Operations de l'Administrateur
-//    include_once ('./functions/operationAdmin.class.php');
-//    // Connexion BD
-//    include_once ('./bd/BD.class.php');
-// boolean de contrôle de membre
-$boolMember = 0;
-$boolAdmin = 0;
+//body
 if (isset($_SESSION['admin'])) {
-    $boolAdmin = 1;
-} elseif (isset($_SESSION['login'])) {
-    $boolMember = 1;
-}
-
-$accion = null;
-$op = "index";
-if (isset($_GET['action'])) {
-    $op = (string) $_GET['action'];
-}
-if ($boolAdmin == 1) {
-    $accion = new myOperationAdmin();
-    $accion->doActionAdmin($op);
-} else if ($boolMember == 1) {
-    $accion = new myOperationMembre();
-    $accion->doActionMembre($op);
+    include ('./clases/paginasAdmin.class.php');
+    $accion = new paginasAdmin();
+} else if (isset($_SESSION['login'])) {
+    include ('./clases/paginasUser.class.php');
+    $accion = new paginasUser();
 } else {
+    include ('./clases/paginas.class.php');
     $accion = new paginas();
-    $accion->doAction($op);
 }
 
+if (isset($_GET['action'])) {
+    $pagina = (string) $_GET['action'];
+} else {
+    $pagina = "index";
+}
+$accion->doAction($pagina);
+
+//footer
 include ('./includes/footer.php');
 ?>
