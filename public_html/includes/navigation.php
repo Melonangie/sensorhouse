@@ -2,8 +2,7 @@
 
 /**
  * Menu de navegacion 
- **/
-
+ * */
 if (isset($_SESSION['login'])) {
     //Menu de un usuaario logado
     echo '					
@@ -40,13 +39,23 @@ if (isset($_SESSION['login'])) {
             </ul>
         </li> 
         <li><a href="#contact">Tienda</a></li>
-        <li><a href="#contact">Documentacion</a></li>
+        <li><a href="#contact">Nota Legal</a></li>
 	');
 } else {
     //Menu de un visiatante
     echo '
-	<li class="active" ><a href="#" lang="en">Principal</a></li>
-        <li><a href="#about" lang="en">Presentacion</a></li>
+	<li class="active" ><a href="#" lang="en">Sensor House</a></li>
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span lang="en">Conozcanos</span><b class="caret"></b></a>
+            <ul class="dropdown-menu">
+                <li class="nav-header" lang="en">Informacion General</li>
+                <li><a href="#" lang="en">Presentacion</a></li>
+                <li><a href="#" lang="en">Objetivos</a></li>
+                <li><a href="#" lang="en">Competencias</a></li>
+                <li class="divider"></li>
+                <li><a href="#" lang="en">Garantia de Calidad</a></li>
+            </ul>
+        </li>
         <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span lang="en">Video Vigilancia</span><b class="caret"></b></a>
             <ul class="dropdown-menu">
@@ -59,8 +68,8 @@ if (isset($_SESSION['login'])) {
             </ul>
         </li> 
         <li><a href="#contact" lang="en">Tienda</a></li>
-        <li><a href="#contact" lang="en">Documentacion</a></li>
-        <li><a href="#contact" lang="en">Contactarnos</a></li>
+        <li><a href="#contact" lang="en">Nota Legal</a></li>
+        <li><a href="#contact" lang="en">Contactanos</a></li>
         ';
 }
 ?>
