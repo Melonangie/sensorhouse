@@ -476,6 +476,16 @@ min-width: 980px
     .row-fluid .thumbnails {
         margin-left: 0;
     }
+    .bs-docs-container {
+        max-width: 970px;
+    }
+    .bs-docs-sidenav {
+        width: 270px;
+    }
+    .bs-docs-sidenav > li > a {
+        width: 230px;
+        width: 230px \9; /* Override the previous IE8-9 hack */
+    }
 }
 
 /* 768px - 979px
@@ -825,6 +835,14 @@ min-width: 980px
       left: 25%;
     }
     */
+    /* Adjust sidenav width */
+    .bs-docs-sidenav {
+        width: 166px;
+        margin-top: 20px;
+    }
+    .bs-docs-sidenav.affix {
+        top: 0;
+    }
 }
 
 /* < 767px
@@ -942,6 +960,20 @@ min-width: 980px
     .modal.fade.in {
         top: 20px;
     }
+    /* Space out the show-grid examples */
+    .show-grid [class*="span"] {
+        margin-bottom: 5px;
+    }
+    /* Sidenav */
+    .bs-docs-sidenav {
+        width: auto;
+        margin-bottom: 20px;
+    }
+    .bs-docs-sidenav.affix {
+        position: static;
+        width: auto;
+        top: 0;
+    }
 }
 
 /* < 480px
@@ -1012,6 +1044,64 @@ min-width: 980px
     }
     .carousel-caption {
         position: static;
+    }
+    /* Change up some type stuff */
+    h2 small {
+        display: block;
+    }
+    /* center align subhead text like the masthead */
+    .subhead h1,
+    .subhead p {
+        text-align: center;
+    }
+    /* center example sites */
+    .example-sites {
+        margin-left: 0;
+    }
+    .example-sites > li {
+        float: none;
+        display: block;
+        max-width: 280px;
+        margin: 0 auto 18px;
+        text-align: center;
+    }
+    .example-sites .thumbnail > img {
+        max-width: 270px;
+    }
+
+    /* Do our best to make tables work in narrow viewports */
+    table code {
+        white-space: normal;
+        word-wrap: break-word;
+        word-break: break-all;
+    }
+
+    /* Examples: dropdowns */
+    .bs-docs-example-submenus > .pull-left {
+        float: none;
+        clear: both;
+    }
+    .bs-docs-example-submenus > .pull-left,
+    .bs-docs-example-submenus > .pull-left + .pull-left {
+        margin-left: 0;
+    }
+    .bs-docs-example-submenus p {
+        margin-bottom: 0;
+    }
+    .bs-docs-example-submenus .dropup > .dropdown-menu,
+    .bs-docs-example-submenus .dropdown > .dropdown-menu {
+        margin-bottom: 10px;
+        float: none;
+        max-width: 180px;
+    }
+
+    /* Examples: modal */
+    .modal-example .modal {
+        position: relative;
+        top: auto;
+        right: auto;
+        bottom: auto;
+        left: auto;
     }
 }
 
@@ -1152,6 +1242,19 @@ min-width: 980px
     .navbar .btn-navbar {
         display: block;
     }
+    /* Inline-block quick links for more spacing */
+    .quick-links li {
+        display: inline-block;
+        margin: 5px;
+    }
+
+    /* When affixed, space properly */
+    .bs-docs-sidenav {
+        top: 0;
+        width: 218px;
+        margin-top: 30px;
+        margin-right: 0;
+    }
 }
 
 /*  > 980px
@@ -1164,11 +1267,16 @@ min-width: 980px
     .mybutton{
         position: static;
         float:right;
+        margin:0;
+        color: white;
+        border-color:darkgreen;
+        
     }
     .navbar .nav {
         position: relative;
-        top:5em;
-        float:right;}
+        top:4.5em;
+        right: 20px;
+    }
     .nav{
         *zoom: 1;
     }
@@ -1183,6 +1291,9 @@ min-width: 980px
     }
     .nav > li {
         float: left;
+    }
+    .bs-docs-sidenav .li{
+    width: 258px;
     }
     .nav > li > a {
         padding-right: 12px;

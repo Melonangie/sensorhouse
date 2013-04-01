@@ -25,7 +25,8 @@
         <meta http-equiv="cleartype" content="on" />
         <!-- css
         ================================================== -->
-        <link rel="stylesheet" href="css/bootstrap.css">
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/sensor.css">
         <link rel="stylesheet" href="css/bootstrap-responsive.css">
         <!-- Javascript
         ================================================== -->

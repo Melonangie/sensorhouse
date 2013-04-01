@@ -9,7 +9,6 @@
     <div class="container">
         <?php
         require ('./clases/PasswordHash.class.php');
-        require ('./bd/Local.php');
         $hash_cost_log2 = 8;
         $hash_portable = FALSE;
         $pass = 'admin';
@@ -19,15 +18,9 @@
         $hash2 = $hasher->HashPassword($pass2);
         print '<p>Admin: ' . $hash . "</p>";
         print '<p>User: ' . $hash2 . "</p>";
-        echo Setting::HOSTNAME;
-//        if ($hasher->CheckPassword($pass, $hash)) {
-//            $what = 'Authentication succeeded';
-//        } else {
-//            $what = 'Authentication failed';
-//        }
         unset($hasher);
         unset($hasher2);
-        echo phpinfo(32);
+        //echo phpinfo(32);
         //     echo "$what\n";
         ?>
         <p>Designed and built with all the love in the world by <a href="http://twitter.com/mdo" target="_blank">@mdo</a> and <a href="http://twitter.com/fat" target="_blank">@fat</a>.</p>

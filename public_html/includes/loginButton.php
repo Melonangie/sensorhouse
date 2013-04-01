@@ -5,7 +5,7 @@
  * and open the template in the editor.
  */
 ?>
-<a href="#myModal" role="button" class="btn btn-success mybutton" data-toggle="modal"><i class="icon-white icon-user"></i>Login</a>
+<a href="#myModal" role="button" class="btn btn-info mybutton" data-toggle="modal"><i class="icon-white icon-user"></i>Login</a>
                     
         <!-- Modal -->
         <div id="myModal" class="modal hide fade login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

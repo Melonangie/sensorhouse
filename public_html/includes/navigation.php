@@ -44,16 +44,16 @@ if (isset($_SESSION['login'])) {
 } else {
     //Menu de un visiatante
     echo '
-	<li class="active" ><a href="#" lang="en">Sensor House</a></li>
+	<li class="active" ><a href="index.php?action=index" lang="en">Sensor House</a></li>
         <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span lang="en">Conozcanos</span><b class="caret"></b></a>
             <ul class="dropdown-menu">
                 <li class="nav-header" lang="en">Informacion General</li>
-                <li><a href="#" lang="en">Presentacion</a></li>
-                <li><a href="#" lang="en">Objetivos</a></li>
-                <li><a href="#" lang="en">Competencias</a></li>
+                <li><a href="index.php?action=presentacion#dropdowns" lang="en">Presentacion</a></li>
+                <li><a href="index.php?action=presentacion#buttonGroups" lang="en">Objetivos</a></li>
+                <li><a href="index.php?action=presentacion#buttonDropdowns" lang="en">Competencias</a></li>
                 <li class="divider"></li>
-                <li><a href="#" lang="en">Garantia de Calidad</a></li>
+                <li><a href="index.php?action=presentacion#navs" lang="en">Garantia de Calidad</a></li>
             </ul>
         </li>
         <li class="dropdown">
@@ -68,7 +68,16 @@ if (isset($_SESSION['login'])) {
             </ul>
         </li> 
         <li><a href="#contact" lang="en">Tienda</a></li>
-        <li><a href="#contact" lang="en">Nota Legal</a></li>
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span lang="en">Nota Legal</span><b class="caret"></b></a>
+            <ul class="dropdown-menu">
+                <li class="nav-header" lang="en">Nuestros Clientes</li>
+                <li><a href="#" lang="en">Planeacion y Organizacion del Trabajo</a></li>
+                <li><a href="#" lang="en">Administracion de Proyectos de TI</a></li>
+                <li><a href="#" lang="en">Sistemas de Calidad de TI</a></li>
+                <li><a href="#" lang="en">Redes Convergentes</a></li>
+            </ul>
+        </li>
         <li><a href="#contact" lang="en">Contactanos</a></li>
         ';
 }
