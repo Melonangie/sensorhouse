@@ -153,6 +153,11 @@ min-width: 980px
     .navbar-static-top .container{
         width: 1170px;
     }
+    .navbar .nav {
+        position: relative;
+        top:2em;
+        right: 20px;
+    }
     .span12 {
         width: 1170px;
     }
@@ -1162,7 +1167,7 @@ min-width: 980px
     .nav-collapse .dropdown-menu a {
         padding: 9px 15px;
         font-weight: bold;
-        color: #777777;
+        color: white;
         -webkit-border-radius: 3px;
         -moz-border-radius: 3px;
         border-radius: 3px;
@@ -1175,6 +1180,7 @@ min-width: 980px
         border-radius: 4px;
     }
     .nav-collapse .dropdown-menu li + li a {
+        text-shadow:none;
         margin-bottom: 2px;
     }
     .nav-collapse .nav > li > a:hover,
@@ -1251,7 +1257,7 @@ min-width: 980px
     /* When affixed, space properly */
     .bs-docs-sidenav {
         top: 0;
-        width: 218px;
+        width: 166px;
         margin-top: 30px;
         margin-right: 0;
     }
@@ -1274,7 +1280,7 @@ min-width: 980px
     }
     .navbar .nav {
         position: relative;
-        top:4.5em;
+        top:2em;
         right: 20px;
     }
     .nav{
@@ -1294,22 +1300,16 @@ min-width: 980px
     }
     .bs-docs-sidenav .li{
     width: 258px;
-    }
-    .nav > li > a {
-        padding-right: 12px;
-        padding-left: 12px;
-        margin-right: 2px;
+   }
+  /*   .nav > li > a {
         line-height: 14px;
-    }
-    .nav > li > a {
-        padding-top: 8px;
-        padding-bottom: 8px;
-        margin-top: 2px;
-        margin-bottom: 2px;
+        margin: 0px 0px -1px;
+padding: 8px 14px;
+border: 1px solid rgb(229, 229, 229);
         -webkit-border-radius: 5px;
         -moz-border-radius: 5px;
         border-radius: 5px;
-    }
+    }*/
     .nav > .active > a,
     .nav > .active > a:hover,
     .nav > .active > a:focus {

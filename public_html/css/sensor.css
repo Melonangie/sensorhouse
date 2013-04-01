@@ -20,9 +20,9 @@ html {
 body {
     margin: 0;
     padding: 0;
+    background: url("../img/codrops_bg.jpg") repeat scroll left top rgb(244, 246, 248);
     font: 300 14px/21px "HelveticaNeue-Light", "Helvetica Neue", Helvetica, Arial, sans-serif;;
     color: rgb(68, 68, 68);
-    background-color:  rgb(238, 238, 238);
 }
 
 /* Font Styles
@@ -57,13 +57,6 @@ h1,h2,h3,h4,h5,h6 {
     border-bottom: 1px solid #FFF; 
     background-repeat: repeat-x;
     box-shadow: 0px 1px 2px rgb(37, 95, 126);
-/*    background: rgb(122,221,252);
-    background: -moz-linear-gradient(top, rgba(122,221,252,1) 0%, rgba(105,214,248,1) 19%, rgba(26,181,229,1) 75%, rgba(1,171,223,1) 100%);  FF3.6+ 
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(122,221,252,1)), color-stop(19%,rgba(105,214,248,1)), color-stop(75%,rgba(26,181,229,1)), color-stop(100%,rgba(1,171,223,1)));  Chrome,Safari4+ 
-    background: -webkit-linear-gradient(top, rgba(122,221,252,1) 0%,rgba(105,214,248,1) 19%,rgba(26,181,229,1) 75%,rgba(1,171,223,1) 100%);  Chrome10+,Safari5.1+ 
-    background: -o-linear-gradient(top, rgba(122,221,252,1) 0%,rgba(105,214,248,1) 19%,rgba(26,181,229,1) 75%,rgba(1,171,223,1) 100%);
-    background: linear-gradient(to bottom, rgba(122,221,252,1) 0%,rgba(105,214,248,1) 19%,rgba(26,181,229,1) 75%,rgba(1,171,223,1) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7addfc', endColorstr='#01abdf',GradientType=0 );*/
 }
 .navbar-static-top {
     position: static;
@@ -130,7 +123,10 @@ h1,h2,h3,h4,h5,h6 {
     -moz-box-shadow: inset 0px -3px 1px rgba(255, 255, 255, 1), inset 0 0px 3px rgba(0, 0, 0, 0.9);
     box-shadow: inset 0px -3px 1px rgba(255, 255, 255, 1), inset 0 0px 3px rgba(0, 0, 0, 0.9)
 }
-
+.navbar .nav > li > a{
+    color:white;
+    text-shadow:none;
+}
 /* Sections
 -------------------------------------------------- */
 section > .page-header,
