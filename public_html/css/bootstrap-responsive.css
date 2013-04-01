@@ -485,7 +485,7 @@ min-width: 980px
         max-width: 970px;
     }
     .bs-docs-sidenav {
-        width: 270px;
+        width: 260px;
     }
     .bs-docs-sidenav > li > a {
         width: 230px;
@@ -957,7 +957,7 @@ min-width: 980px
         margin: 0;
     }
     .modal.login {
-        left: 15%;
+/*        left: 15%;*/
     }
     .modal.fade {
         top: -100px;
@@ -986,13 +986,14 @@ min-width: 980px
 @media (max-width: 480px) {
     .nav-collapse {
         -webkit-transform: translate3d(0, 0, 0);
+        
     }
     .navbar-inner {
         min-height: 71px;
     }
     .navbar .brand {
         top: 3px;
-        left: 33%;
+        left: 10%;
         margin: 0px auto 0px auto;
         width: 127px;
         height: 38px;
@@ -1000,6 +1001,18 @@ min-width: 980px
     }
     .navbar .btn-navbar, .navbar .mybutton {
         margin-top: 5px;
+    }
+    .navbar .mybutton{
+        width: 91%;
+        margin-top: 15px;
+    }
+    .navbar .btn-group {
+        width: 99%;
+        margin-top: 15px;
+    }
+    .navbar .btn-group .btn{
+        width: 50%;
+        margin-top: 15px;
     }
     .page-header h1 small {
         display: block;
@@ -1041,7 +1054,7 @@ min-width: 980px
         left: 10px;
     } 
     .modal.login {
-        left: 10%;
+/*        left: 10%;*/
     }
     .modal-header .close {
         padding: 10px;
@@ -1148,7 +1161,7 @@ min-width: 980px
     }
     .nav-collapse .nav {
         float: none;
-        margin: 25px 0 10px;
+        margin: 15px 0 10px;
     }
     .nav-collapse .nav > li {
         float: none;
@@ -1257,7 +1270,7 @@ min-width: 980px
     /* When affixed, space properly */
     .bs-docs-sidenav {
         top: 0;
-        width: 166px;
+        width: 156px;
         margin-top: 30px;
         margin-right: 0;
     }
@@ -1276,7 +1289,7 @@ min-width: 980px
         margin:0;
         color: white;
         border-color:darkgreen;
-        
+
     }
     .navbar .nav {
         position: relative;
@@ -1298,18 +1311,18 @@ min-width: 980px
     .nav > li {
         float: left;
     }
-    .bs-docs-sidenav .li{
-    width: 258px;
-   }
-  /*   .nav > li > a {
-        line-height: 14px;
-        margin: 0px 0px -1px;
-padding: 8px 14px;
-border: 1px solid rgb(229, 229, 229);
-        -webkit-border-radius: 5px;
-        -moz-border-radius: 5px;
-        border-radius: 5px;
-    }*/
+    .bs-docs-sidenav li{
+        width: 210px;
+    }
+    /*   .nav > li > a {
+          line-height: 14px;
+          margin: 0px 0px -1px;
+  padding: 8px 14px;
+  border: 1px solid rgb(229, 229, 229);
+          -webkit-border-radius: 5px;
+          -moz-border-radius: 5px;
+          border-radius: 5px;
+      }*/
     .nav > .active > a,
     .nav > .active > a:hover,
     .nav > .active > a:focus {

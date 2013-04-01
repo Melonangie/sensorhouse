@@ -205,7 +205,7 @@ box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
 /* Sidenav for Docs
 -------------------------------------------------- */
 .bs-docs-sidenav {
-/*  width: 228px;*/
+width: 210px;
   margin: 0;
   padding: 0;
   background-color: #fff;
@@ -218,7 +218,8 @@ box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
 }
 .bs-docs-sidenav > li > a {
   display: block;
-  width: 190px \9;
+  width: 126px \9;
+  width: auto;
   margin: 0 0 -1px;
   padding: 8px 14px;
   border: 1px solid #e5e5e5;
@@ -262,12 +263,12 @@ box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
   opacity: 1;
 }
 .bs-docs-sidenav.affix {
-  top: 270px;
+  top: 40px;
 }
 .bs-docs-sidenav.affix-bottom {
   position: absolute;
   top: auto;
-  bottom: 270px;
+  bottom: 230px;
 }
 
 /* Modal
