@@ -92,9 +92,19 @@ min-width: 980px
         height: 55px;
         background: url(../img/logo_medium.png) no-repeat 0px 0px;
     }
-    .navbar .btn-navbar, .navbar .mybutton {
+    .navbar .btn-navbar, .navbar .mybutton, .navbar .btn-group {
         margin-top: 25px;
     }
+    .navbar .mybutton, .btn-group {
+       /* position: relative;
+        top: 90px; left: 20px;
+        display:inline-block;
+        z-index: 1;
+      
+    }*/  width: 45%;
+    }
+    .btn-group .btn{width: 50%;float: right;}
+    .modal{left: 25%;}
 }
 
 /* <767px
@@ -1192,6 +1202,7 @@ min-width: 980px
         -moz-border-radius: 4px;
         border-radius: 4px;
     }
+    
     .nav-collapse .dropdown-menu li + li a {
         text-shadow:none;
         margin-bottom: 2px;
@@ -1203,9 +1214,14 @@ min-width: 980px
         background-color: #f2f2f2;
     }
     .nav-collapse.in .btn-group {
-        padding: 0;
-        margin-top: 5px;
+        padding: 5px;
+        margin-top: 20px;
+        float: right;
     }
+/*    .navbar .btn-group {
+        margin-top: 25px;
+        float: right;
+    }*/
     .nav-collapse .dropdown-menu {
         position: static;
         top: auto;
@@ -1293,7 +1309,7 @@ min-width: 980px
     }
     .navbar .nav {
         position: relative;
-        top:2em;
+        top:1.5em;
         right: 20px;
     }
     .nav{

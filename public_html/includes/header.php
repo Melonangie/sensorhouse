@@ -62,10 +62,11 @@
                     <nav class="nav-collapse collapse">
                         <!-- Button to trigger login modal -->
                         <?php include ('./includes/loginButton.php'); ?>
-                            <div class="btn-group" data-toggle="buttons-radio">
-    <button type="button" class="btn btn-info" onclick="window.lang.change('en');">Espa&ntilde;ol</button>
-    <button type="button" class="btn btn-info" onclick="window.lang.change('es');">English</button>
-    </div>
+                        <!-- Button to select language -->
+                        <div class="btn-group" data-toggle="buttons-radio">
+                            <button type="button" class="btn btn-info" onclick="window.lang.change('en');">Espa&ntilde;ol</button>
+                            <button type="button" class="btn btn-info" onclick="window.lang.change('es');">English</button>
+                        </div>
                         <!-- Navigation -->
                         <ul class="nav">
                             <?php include ('./includes/navigation.php'); ?>

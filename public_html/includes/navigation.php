@@ -49,11 +49,11 @@ if (isset($_SESSION['login'])) {
             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span lang="en">Conozcanos</span><b class="caret"></b></a>
             <ul class="dropdown-menu">
                 <li class="nav-header" lang="en">Informacion General</li>
-                <li><a href="index.php?action=presentacion#dropdowns" lang="en">Presentacion</a></li>
-                <li><a href="index.php?action=presentacion#buttonGroups" lang="en">Objetivos</a></li>
-                <li><a href="index.php?action=presentacion#buttonDropdowns" lang="en">Competencias</a></li>
+                <li><a href="index.php?action=presentacion#Presentacion" lang="en">Presentacion</a></li>
+                <li><a href="index.php?action=presentacion#Objetivos" lang="en">Objetivos</a></li>
+                <li><a href="index.php?action=presentacion#Competencias" lang="en">Competencias</a></li>
                 <li class="divider"></li>
-                <li><a href="index.php?action=presentacion#navs" lang="en">Garantia de Calidad</a></li>
+                <li><a href="index.php?action=presentacion#Calidad" lang="en">Garantia de Calidad</a></li>
             </ul>
         </li>
         <li class="dropdown">
