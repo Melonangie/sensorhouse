@@ -63,9 +63,26 @@
             <?php
             if (isset($_SESSION['login']))
                 echo $_SESSION['login'];
-            include_once './bd/bdo.class.php'; $test = "usuario";
-            $db_connect=new bd();
-            $db_connect->getUserId($test);
+            include_once './bd/queries.sql.php';
+            $test = "usuario";
+            $db_connect = new queries();
+            //$test=$db_connect->muestraPass($test);
+            $db_connect->muestraPass($test);
+            
+//            require ('./clases/PasswordHash.class.php');
+//            $hash_cost_log2 = 8;
+//            $hash_portable = FALSE;
+//            $pass = 'admin';
+//            $pass2 = 'user';
+//            $hasher = new PasswordHash($hash_cost_log2, $hash_portable);
+//            $hash = $hasher->HashPassword($pass);
+//            $hash2 = $hasher->HashPassword($pass2);
+//            print '<p>Admin: ' . $hash . "</p>";
+//            print '<p>User: ' . $hash2 . "</p>";
+//            unset($hasher);
+//            unset($hasher2);
+//            echo phpinfo(32);
+//            echo "$what\n";
             ?>
             <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
             <p><a class="btn" href="#">View details &raquo;</a></p>
