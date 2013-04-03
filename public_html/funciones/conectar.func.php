@@ -1,30 +1,65 @@
 <?php
- /**
- * @package pages
+include_once ('usuarios.func.php');
+
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
  */
-include_once ('./BD/user.sql.php');
-echo '<section><h1> Verification de Connexion </h1><article>';
 
-if (isset($_POST['connexion']) && $_POST['connexion'] == 'Connexion' && 
-        (isset($_SESSION['token_time'])) && 
-        (isset($_SESSION['token'])) && 
-        (isset($_POST['token'])) && 
-        $_POST['token'] == $_SESSION['token']) {
-            $token_age = time() - $_SESSION['token_time'];
-            if ((isset($_POST['login']) && !empty($_POST['login'])) && 
-                    (isset($_POST['pass']) && 
-                    !empty($_POST['pass'])) && 
-                    $token_age <= 300 ) {
-                // Test if the login and password are defined.
-		$db = new BD();
-		//extract($_POST);   je vous renvoie à la doc de cette fonction
-		$exist = existID($_POST['login'], $_POST['pass'], $db);
-		$admin = isAdmin($_SESSION['id'], $db);
-		$idMembre = getUserId($_SESSION['login'], $db);
-		$idMembre = $_SESSION['id'];
-		$db->closeConnexion(); 
+/**
+ * Checks the token
+ * @return boolean
+ */
+function validaToken() {
+    $formaValida = TRUE;
+    if (isset($_POST['token']) && $_POST['token'] != $_SESSION['token']) {
+        $formaValida = FALSE;
+    }
+    return $formaValida;
+}
 
-		if ($exist == 1) { 
+/**
+ * check all expected variables are set 
+ * @return boolean
+ */
+function validaSubmit() {
+    $formaValida = TRUE;
+    if(!isset($_POST['login'], $_POST['pass'], $_SESSION['token'])) {
+           $formaValida = FALSE;
+    }
+    return $formaValida;
+}
+
+function validaLogin() {
+    $user = getUser();
+    $pass = getPassword();
+    if($user === '' || $pass === '')
+        $error = '<div class="alert alert-error hide"><span lang="en">Usuario o Clave Invalido</span></div>';
+    if(!isset($error)) {
+        $userId = getUserid($user, $pass);
+        $userId = $_SESSION['id'];
+        $admin  = esAdmin($_SESSION['id']);
+    }
+}
+
+
+
+?>
+<div class="slider-holder">
+    <div class="container">
+        <div class="shell">
+            <div class="hero-unit">
+                <h1>Hello, world!</h1>
+                <p><?php echo $user; ?></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+if ($exist == 1) { 
 	// si on obtient une réponse, alors l'utilisateur est un membre
 		$_SESSION['login'] = $_POST['login'];
 			if ($admin) {
@@ -63,5 +98,3 @@ if (isset($info)){
 		<p class='message'><strong><a href='index.php'>Retour &agrave; l'accueil</a></strong></p>
 			</article></section>";
 }
-
-?>

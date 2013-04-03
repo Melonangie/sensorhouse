@@ -285,6 +285,10 @@ width: 210px;
              right: auto;
              bottom: auto;
              left: auto;*/}
+fieldset{
+    margin-top: 2em;
+    margin-bottom: 1em;
+}
 
 /* Slider
 -------------------------------------------------- */

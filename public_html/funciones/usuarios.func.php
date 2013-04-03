@@ -1,15 +1,12 @@
 <?php
 
-require_once ('./clases/HTMLPurifier.standalone.php');
-require_once ('./clases/PasswordHash.class.php');
+include_once ('./clases/HTMLPurifier.standalone.php');
+include_once ('./clases/PasswordHash.class.php');
+include_once ('./bd/queries.sql.php');
 
 /**
- * Funciones para variables para encriptar claves 
+ * Funciones para encriptar claves 
  */
-$hash = '';
-$hasher = '';
-$debug = TRUE;
-$dummy_salt = '$2a$08$1234567890123456789012';
 
 /**
  * limpia y desinfecta
@@ -19,7 +16,8 @@ $dummy_salt = '$2a$08$1234567890123456789012';
 function getPost($var) {
     $config = HTMLPurifier_Config::createDefault();
     $purifier = new HTMLPurifier($config);
-    return $purifier->purify($_POST[$var]);
+    $clean_html  = $purifier->purify($_POST[$var]);
+    return $clean_html;
     //       return $purifier->purify($var);
 }
 
@@ -88,7 +86,7 @@ function verificaClave($newpass, $oldpass = '', $user = '') {
  * @return string Vacio si el usuario es invalido
  */
 function getUser() {
-    $user = getPost('user');
+    $user = getPost('login');
     if (!preg_match('/^[a-zA-Z0-9_]{1,60}$/', $user))
         $user = ''; //Usuario Invalido
     return $user;

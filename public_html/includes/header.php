@@ -52,7 +52,7 @@
             <div class="navbar-inner">
                 <div class="container">
                     <!-- Logo -->
-                    <a class="brand" href="#"></a>
+                    <a class="brand" href="index.php?action=index"></a>
                     <!-- Button to trigger dropdown menu -->
                     <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
                         <span class="icon-bar"></span>

@@ -1,7 +1,5 @@
 <?php
 
-require_once ('./clases/HTMLPurifier.standalone.php');
-require_once ('./clases/PasswordHash.class.php');
 require_once ('bdo.class.php');
 
 /**
@@ -53,6 +51,15 @@ class queries {
         echo $this->hash;
         unset($this->hash);
         $this->stmt->close();
+    }
+    
+    public function getUserid($user, $pass) {
+        $id = "1";
+        return $id;
+    }
+    
+    public function esAdmin($userid) {
+        return TRUE;
     }
     
 }
